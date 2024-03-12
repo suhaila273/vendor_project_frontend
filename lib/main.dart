@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vendor_app/Pages/login.dart';
+
 
 void main(){
   runApp(HomePage());
@@ -8,6 +10,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      home: SignInPage(),
+    );
   }
 }
