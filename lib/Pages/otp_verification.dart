@@ -47,42 +47,70 @@ class _VerificationPageState extends State<VerificationPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset("assets/farm2.svg",height: 300,width: 300,alignment: Alignment.center,),
                 SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(onPressed: (){
+                      Navigator.pop(context);
+                    },
+                      icon: Icon(Icons.arrow_back_ios,color: Color(0xFF004225),size: 25,),)
+                  ],
+                ),
+                SvgPicture.asset(height: 300,'assets/otp.svg'),
+                //SvgPicture.asset("assets/farm2.svg",height: 250,width: 250,alignment: Alignment.center,),
+                SizedBox(height: 20,),
+                Text("Verify OTP",
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF004225)
+                  ),),
+                SizedBox(height: 10,),
+                Text("Please enter the verification code",
+                  style: TextStyle(color: Colors.grey.shade800),),
+                SizedBox(height: 20,),
                 SizedBox(
-                  width: 400,
+                  width: 200,
                   child: TextField(
                     controller: ob1,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.verified_outlined),
+                      filled: true,
+                        fillColor: Color(0xffe1ead8),
+                        prefixIcon: Icon(Icons.password_outlined),
+                        labelText: '',
+                        labelStyle: TextStyle(color: Colors.grey.shade800),
                         hintText: 'verification code',
                         border: OutlineInputBorder(),
-                        labelText: '',
-                        fillColor: Colors.grey,
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderSide: BorderSide.none
+                        ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 2,
+                            color: Colors.green,
+                            width: 1,
                           ),
                         )
                     ),
                   ),
                 ),
-                Text("$invalid_otp",style: TextStyle(color: Colors.red),),
-                SizedBox(height: 10,),
+                SizedBox(height: 20,),
                 SizedBox(
+                  height: 50,
                   width: 200,
-                  child: ElevatedButton(onPressed:otp_verify, child: Text("Continue"),
+                  child: ElevatedButton(onPressed:otp_verify, child: Text("Verify",style: TextStyle(fontSize: 18)),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal,
+                        backgroundColor: Color(0xFF004225),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)
+                            borderRadius: BorderRadius.circular(10)
                         )
-
                     ),),
                 ),
+                SizedBox(height: 20,),
+                Text("$invalid_otp",style: TextStyle(color: Colors.red),),
               ],
             ),
           ),
