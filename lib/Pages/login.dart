@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vendor_app/Pages/Menu_page.dart';
+import 'package:vendor_app/Pages/forgot_pass_email_verif.dart';
 import 'package:vendor_app/Pages/register_page.dart';
 import 'package:vendor_app/Services/user_service.dart';
 
@@ -110,7 +111,7 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               TextButton(
                 onPressed: () {
-                  // Handle forgot password
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Forgot_Password()));
                 },
                 child: Text(
                   "Forgot Password?",
