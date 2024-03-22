@@ -29,7 +29,7 @@ class _Forgot_PasswordState extends State<Forgot_Password> {
     {
       print("email not registered");
       setState(() {
-        invalid_email="Email not registered";
+        invalid_email="Given Email Id is not registered";
       });
 
     }
@@ -47,51 +47,72 @@ class _Forgot_PasswordState extends State<Forgot_Password> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset("assets/farm2.svg",height: 300,width: 300,alignment: Alignment.center,),
                 SizedBox(height: 10,),
-                Text("Enter email id",
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(onPressed: (){
+                      Navigator.pop(context);
+                    },
+                      icon: Icon(Icons.arrow_back_ios,color: Color(0xFF004225),size: 25,),)
+                  ],
+                ),
+                SvgPicture.asset(height: 300,'assets/fp1.svg'),
+                SizedBox(height: 20,),
+                Text("Forgot Password ?",
                   style: TextStyle(
                       fontSize: 22,
-                      fontWeight: FontWeight.w500
+                      fontWeight: FontWeight.w500,
+                    color: Color(0xFF004225)
                   ),),
                 SizedBox(height: 10,),
+                Text("Please enter your email address to recievce a verification code",
+                  style: TextStyle(color: Colors.grey.shade800),),
+                SizedBox(height: 20,),
+                //Text("Email Address",style: TextStyle(color: Color(0xFF004225)),),
                 SizedBox(
                   width: 400,
                   child: TextField(
                     controller: ob1,
                     decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xffe1ead8),
                         prefixIcon: Icon(Icons.email_outlined),
                         border: OutlineInputBorder(),
-                        hintText: 'email',
-                        labelText: '',
-                        fillColor: Colors.grey,
+                        labelText: "Email Address",
+                        labelStyle: TextStyle(color: Colors.grey.shade800),
+                        //hintText: 'Email id',
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                            borderSide: BorderSide.none
+                        ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           borderSide: const BorderSide(
-                            color: Colors.black,
-                            width: 2,
+                            color: Colors.green,
+                            width: 1,
                           ),
                         )
                     ),
                   ),
                 ),
-                Text("$invalid_email",style: TextStyle(color: Colors.red),),
-                SizedBox(height: 10,),
-                Text("We'll send a verification code to this email"),
-                SizedBox(height: 30,),
+                SizedBox(height: 20,),
                 SizedBox(
-                  width: 200,
+                  height: 50,
+                  width: 250,
                   child: ElevatedButton(onPressed:otp_email,
-                    child: Text("Continue"),
+                    child: Text("Continue",style: TextStyle(fontSize: 18)),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal,
+                        backgroundColor: Color(0xFF004225),
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)
+                            borderRadius: BorderRadius.circular(10)
                         )
 
                     ),),
                 ),
+                SizedBox(height: 20,),
+                Text("$invalid_email",style: TextStyle(color: Colors.red),),
               ],
             ),
           ),

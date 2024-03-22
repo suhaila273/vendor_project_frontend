@@ -17,11 +17,13 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
 
   bool _obscureText = true; // Track password visibility
+  String respText="";
 
   TextEditingController email1=new TextEditingController();
   TextEditingController pass1=new TextEditingController();
 
   void SendValuesToApi() async {
+    respText="";
     final response = await VendorApiService().VendorloginData(email1.text, pass1.text);
     if(response["status"]=="success")
     {
@@ -35,10 +37,16 @@ class _SignInPageState extends State<SignInPage> {
     else if(response["status"]=="invalid email id")
     {
       print("Invalid email id");
+      setState(() {
+        respText="Please Enter valid Email Id";
+      });
     }
     else if(response["status"]=="incorrect password")
     {
       print("Invalid password");
+      setState(() {
+        respText = "Incorrect Password";
+      });
     }
     else
     {
@@ -59,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
           child: Column(
             children: [
               SizedBox(height: 25,),
-            SvgPicture.asset(height: 250,'assets/farm2.svg'),
+            SvgPicture.asset(height: 225,'assets/farm2.svg'),
             SizedBox(height: 25,),
           Text("Login to your Account !",style: TextStyle(color: Color(0xFF004225),fontSize: 22),),
           SizedBox(height: 25,),
@@ -72,11 +80,18 @@ class _SignInPageState extends State<SignInPage> {
               labelText: "Email Id",
               labelStyle: TextStyle(color: Colors.grey.shade800),
               //hintText: "Enter email",
-              border: OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.0),
                 borderSide: BorderSide.none,
               ),
               prefixIcon: Icon(Icons.email_outlined),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderSide: BorderSide(
+                    color: Colors.green,
+                    width: 1,
+                  ),
+                )
             ),
           ),
           SizedBox(height: 10,),
@@ -88,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                   fillColor: Color(0xffe1ead8),
                   labelText: "Password",
                   labelStyle: TextStyle(color: Colors.grey.shade800),
-                  border: OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                     borderSide: BorderSide.none,
                   ),
@@ -102,6 +117,13 @@ class _SignInPageState extends State<SignInPage> {
                       });
                     },
                   ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(
+                        color: Colors.green,
+                        width: 1,
+                      ),
+                    )
                 ),
               ),
 
@@ -115,14 +137,14 @@ class _SignInPageState extends State<SignInPage> {
                 },
                 child: Text(
                   "Forgot Password?",
-                  style: TextStyle(color: Color(0xFF6A6471)),
+                  style: TextStyle(color: Colors.grey.shade800),
                 ),
               ),
             ],
           ),
           SizedBox(height: 15,),
           SizedBox(
-            height: 55,
+            height: 50,
             width: 250,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -134,13 +156,16 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 onPressed:SendValuesToApi, child:Text("Log In",style: TextStyle(fontSize: 18),)),
           ),
-          SizedBox(height: 40,),
+          SizedBox(height: 15,),
+              Text("$respText",
+                style: TextStyle(color: Colors.red,fontSize: 15),),
+              SizedBox(height: 15,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "Don't have an account?",
-                style: TextStyle(color:Color(0xFF6A6471),fontSize: 16 ),
+                style: TextStyle(color:Colors.black,fontSize: 16 ,),
               ),
               TextButton(
                 onPressed: () {
@@ -148,7 +173,7 @@ class _SignInPageState extends State<SignInPage> {
                       MaterialPageRoute(builder: (context) => RegisterPage()));
                 },
                 child: Text(
-                  "Sign Up",
+                  "SignUp",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

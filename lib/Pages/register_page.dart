@@ -49,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 20,),
+                SizedBox(height: 15,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -71,11 +71,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Email Id",
                     labelStyle: TextStyle(color: Colors.grey.shade800),
                     //hintText: "Enter email",
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
                     prefixIcon: Icon(Icons.email_outlined),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 1,
+                        ),
+                      )
                   ),
                 ),
                 SizedBox(height: 10,),
@@ -88,11 +95,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Password",
                     labelStyle: TextStyle(color: Colors.grey.shade800),
                     //hintText: "Enter password",
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
                     prefixIcon: Icon(Icons.lock_outline),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 1,
+                        ),
+                      )
                   ),
                 ),
                 SizedBox(height: 10,),
@@ -104,11 +118,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Enterprise Name",
                     labelStyle: TextStyle(color: Colors.grey.shade800),
                     //hintText: "Enter enterprise/company name",
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
                     prefixIcon: Icon(Icons.home_work_outlined),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 1,
+                        ),
+                      )
                   ),
                 ),
                 SizedBox(height: 10,),
@@ -120,11 +141,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Enterprise Address",
                     labelStyle: TextStyle(color: Colors.grey.shade800),
                     //hintText: "Enter Enterprise/Company Address",
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
                     prefixIcon: Icon(Icons.location_on_outlined),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 1,
+                        ),
+                      )
                   ),
                 ),
                 SizedBox(height: 10,),
@@ -136,11 +164,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Contact Person Name",
                     labelStyle: TextStyle(color: Colors.grey.shade800),
                     //hintText: "Enter contact person name",
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
                     prefixIcon: Icon(Icons.location_history_outlined),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 1,
+                        ),
+                      )
                   ),
                 ),
                 SizedBox(height: 10,),
@@ -153,16 +188,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     labelText: "Contact Number",
                     labelStyle: TextStyle(color: Colors.grey.shade800),
                     //hintText: "Enter contact number",
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide.none,
                     ),
                     prefixIcon: Icon(Icons.call_outlined),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                          color: Colors.green,
+                          width: 1,
+                        ),
+                      )
                   ),
                 ),
                 SizedBox(height: 15,),
                 SizedBox(
-                  height: 55,
+                  height: 50,
                   width: 250,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -174,13 +216,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       onPressed:SendValuesToApiSignUp, child:Text("Sign Up",style: TextStyle(fontSize: 18),)),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 25,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have Account?",
-                      style: TextStyle(color:Color(0xFF6A6471),fontSize: 16 ),
+                      "Already have an Account?",
+                      style: TextStyle(color: Colors.black,fontSize: 16 ),
                     ),
                     TextButton(
                       onPressed: () {
@@ -188,7 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             MaterialPageRoute(builder: (context) => SignInPage()));
                       },
                       child: Text(
-                        "Log In",
+                        "LogIn",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
