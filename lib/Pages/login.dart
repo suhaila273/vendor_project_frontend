@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vendor_app/Pages/BottomNavigationPage.dart';
 import 'package:vendor_app/Pages/Menu_page.dart';
 import 'package:vendor_app/Pages/forgot_pass_email_verif.dart';
 import 'package:vendor_app/Pages/register_page.dart';
@@ -32,7 +33,7 @@ class _SignInPageState extends State<SignInPage> {
       SharedPreferences preferences=await SharedPreferences.getInstance();
       preferences.setString("userId", userId);
       print("successfully login");
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>VendorMenu()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavPage()));
     }
     else if(response["status"]=="invalid email id")
     {
