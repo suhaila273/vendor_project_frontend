@@ -8,7 +8,7 @@ class VendorApiService
 {
   Future<dynamic> VendorloginData(String email, String password) async {
     var client = http.Client();
-    var apiUrl = Uri.parse("http://192.168.1.6:3001/api/vendor/login");
+    var apiUrl = Uri.parse("http://192.168.0.106:3001/api/vendor/login");
 
     var response = await client.post(apiUrl,
         headers: <String, String>{
@@ -30,7 +30,7 @@ class VendorApiService
   Future<dynamic> addVendorApi(String email,String password,String companyName,String companyAddress,String personName,String contact) async
   {
     var client =http.Client();
-    var apiUrl= Uri.parse("http://192.168.1.6:3001/api/vendor/signup");
+    var apiUrl= Uri.parse("http://192.168.0.106:3001/api/vendor/signup");
 
     var response =await client.post(apiUrl,
         headers: <String,String>{
