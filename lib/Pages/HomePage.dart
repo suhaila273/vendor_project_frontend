@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendor_app/Models/category_model.dart';
+import 'package:vendor_app/Pages/AllCategoryPage.dart';
 import 'package:vendor_app/Pages/CategoryProduct.dart';
+import 'package:vendor_app/Pages/MyProductPage.dart';
 import 'package:vendor_app/Services/category_service.dart';
+import 'package:vendor_app/api_constants.dart';
 
 class ProductHomePage extends StatefulWidget {
   const ProductHomePage({Key? key}) : super(key: key);
@@ -98,10 +101,9 @@ class _ProductHomePageState extends State<ProductHomePage> {
                     ),
                     IconButton(
                       onPressed: () {
-                        // Code to move to another page horizontally
-                        // You can use PageView, PageController, or any other method here
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CategoryMenu()));
                       },
-                      icon: Icon(Icons.arrow_forward_ios_rounded),
+                      icon: Icon(Icons.arrow_forward_ios_rounded,size: 18,),
                       color: Color(0xFF004225),
                     ),
                     SizedBox(width: 10), // Adjust the space between text and icon as needed
@@ -123,7 +125,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                           itemCount: snapshot.data!.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            String img_url = "http://192.168.0.106:3001/" +
+                            String img_url = "${ApiConstants.baseUrl}/" +
                                 snapshot.data![index].categoryIcon.toString();
                             return GestureDetector(
                               onTap: () {
@@ -166,7 +168,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                                       style: TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
-                                        color: Color(0xFF004225),
+                                        color: Colors.grey.shade800,
                                       ),
                                     ),
                                   ],
@@ -184,7 +186,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                 SizedBox(
                   height: 10,
                 ),
-                //GridViewHome(),
+                MyProductPage(),
               ],
             ),
           ),
